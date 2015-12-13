@@ -1,6 +1,7 @@
 package application;
 	
 import java.net.URL;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,7 +35,7 @@ public class Main extends Application {
 	@FXML
 	BubbleChart bubbleChart;
 	@FXML
-	LineChart<Number, Number> lineChart;
+	LineChart<String, Number> lineChart;
 	@FXML
 	PieChart pieChart;
 	@FXML
@@ -72,6 +73,12 @@ public class Main extends Application {
 		canvasTest();
 		pieChartTest();
 		lineChartTest();
+		areaChartTest();
+		barChartTest();
+		bubbleChartTest();
+		scatterChartTest();
+		stackedAreaChartTest();
+		stackedBarChartTest();
 	}
 	
 	private void pieChartTest(){
@@ -82,11 +89,58 @@ public class Main extends Application {
 						new PieChart.Data("Plums", 10),
 						new PieChart.Data("Pears", 22),
 						new PieChart.Data("Apples", 30));
+		pieChart.getData().clear();
 		pieChart.setData(pieChartData);
 	}
 	
-	private void lineChartTest(){
-		lineChart.setTitle("Stock Monitoring, 2010");
+	private void areaChartTest(){
+		areaChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data("1", 23));
+		series.getData().add(new XYChart.Data("2", 14));
+		series.getData().add(new XYChart.Data("3", 15));
+		series.getData().add(new XYChart.Data("4", 24));
+		series.getData().add(new XYChart.Data("5", 34));
+		series.getData().add(new XYChart.Data("6", 36));
+		series.getData().add(new XYChart.Data("7", 22));
+		series.getData().add(new XYChart.Data("8", 45));
+		series.getData().add(new XYChart.Data("9", 43));
+		series.getData().add(new XYChart.Data("10", 17));
+		series.getData().add(new XYChart.Data("11", 29));
+		series.getData().add(new XYChart.Data("12", 25));
+		
+		areaChart.getData().clear();
+		areaChart.getData().add(series);
+	}
+
+	private void barChartTest(){
+		barChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data("1", 23));
+		series.getData().add(new XYChart.Data("2", 14));
+		series.getData().add(new XYChart.Data("3", 15));
+		series.getData().add(new XYChart.Data("4", 24));
+		series.getData().add(new XYChart.Data("5", 34));
+		series.getData().add(new XYChart.Data("6", 36));
+		series.getData().add(new XYChart.Data("7", 22));
+		series.getData().add(new XYChart.Data("8", 45));
+		series.getData().add(new XYChart.Data("9", 43));
+		series.getData().add(new XYChart.Data("10", 17));
+		series.getData().add(new XYChart.Data("11", 29));
+		series.getData().add(new XYChart.Data("12", 25));
+		
+		barChart.getData().clear();
+		barChart.getData().add(series);
+	}
+
+	private void bubbleChartTest(){
+		bubbleChart.setTitle("Stock Monitoring, 2010");
 		//defining a series
 		XYChart.Series<Number, Number> series = new XYChart.Series<>();
 		series.setName("My portfolio");
@@ -104,13 +158,108 @@ public class Main extends Application {
 		series.getData().add(new XYChart.Data(11, 29));
 		series.getData().add(new XYChart.Data(12, 25));
 		
+		bubbleChart.getData().clear();
+		bubbleChart.getData().add(series);
+	}
+
+	private void scatterChartTest(){
+		scatterChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data("1", 23));
+		series.getData().add(new XYChart.Data("2", 14));
+		series.getData().add(new XYChart.Data("3", 15));
+		series.getData().add(new XYChart.Data("4", 24));
+		series.getData().add(new XYChart.Data("5", 34));
+		series.getData().add(new XYChart.Data("6", 36));
+		series.getData().add(new XYChart.Data("7", 22));
+		series.getData().add(new XYChart.Data("8", 45));
+		series.getData().add(new XYChart.Data("9", 43));
+		series.getData().add(new XYChart.Data("10", 17));
+		series.getData().add(new XYChart.Data("11", 29));
+		series.getData().add(new XYChart.Data("12", 25));
+		
+		scatterChart.getData().clear();
+		scatterChart.getData().add(series);
+	}
+
+	private void lineChartTest(){
+		lineChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data("1", 23));
+		series.getData().add(new XYChart.Data("2", 14));
+		series.getData().add(new XYChart.Data("3", 15));
+		series.getData().add(new XYChart.Data("4", 24));
+		series.getData().add(new XYChart.Data("5", 34));
+		series.getData().add(new XYChart.Data("6", 36));
+		series.getData().add(new XYChart.Data("7", 22));
+		series.getData().add(new XYChart.Data("8", 45));
+		series.getData().add(new XYChart.Data("9", 43));
+		series.getData().add(new XYChart.Data("10", 17));
+		series.getData().add(new XYChart.Data("11", 29));
+		series.getData().add(new XYChart.Data("12", 25));
+		
+		lineChart.getData().clear();
 		lineChart.getData().add(series);
+	}
+	
+	private void stackedAreaChartTest(){
+		stackedAreaChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<Number, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data(1, 23));
+		series.getData().add(new XYChart.Data(2, 14));
+		series.getData().add(new XYChart.Data(3, 15));
+		series.getData().add(new XYChart.Data(4, 24));
+		series.getData().add(new XYChart.Data(5, 34));
+		series.getData().add(new XYChart.Data(6, 36));
+		series.getData().add(new XYChart.Data(7, 22));
+		series.getData().add(new XYChart.Data(8, 45));
+		series.getData().add(new XYChart.Data(9, 43));
+		series.getData().add(new XYChart.Data(10, 17));
+		series.getData().add(new XYChart.Data(11, 29));
+		series.getData().add(new XYChart.Data(12, 25));
+		
+		stackedAreaChart.getData().add(series);
+	}
+
+	private void stackedBarChartTest(){
+		stackedBarChart.setTitle("Stock Monitoring, 2010");
+		//defining a series
+		XYChart.Series<String, Number> series = new XYChart.Series<>();
+		series.setName("My portfolio");
+//		populating the series with data
+		series.getData().add(new XYChart.Data("1", 23));
+		series.getData().add(new XYChart.Data("2", 14));
+		series.getData().add(new XYChart.Data("3", 15));
+		series.getData().add(new XYChart.Data("4", 24));
+		series.getData().add(new XYChart.Data("5", 34));
+		series.getData().add(new XYChart.Data("6", 36));
+		series.getData().add(new XYChart.Data("7", 22));
+		series.getData().add(new XYChart.Data("8", 45));
+		series.getData().add(new XYChart.Data("9", 43));
+		series.getData().add(new XYChart.Data("10", 17));
+		series.getData().add(new XYChart.Data("11", 29));
+		series.getData().add(new XYChart.Data("12", 25));
+		
+		stackedBarChart.getData().add(series);
 	}
 	
 	private void canvasTest(){
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		gc.setFill(Color.BLUE);
-		gc.fillRect(75, 75, 100, 100);
+		Color c = new Color(Math.random(), Math.random(), Math.random(), 1d);
+		gc.setFill(c);
+		int x = (int)(Math.random() * canvas.getWidth());
+		int y = (int)(Math.random() * canvas.getHeight());
+		
+		gc.fillRect(x, y, 100, 100);
 	}
 	
 	public static void main(String[] args) {
