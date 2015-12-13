@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="36.0" layoutX="16.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="220.0" />
+      <Label fx:id="numDisp" alignment="CENTER_RIGHT" layoutX="25.0" layoutY="17.0" prefHeight="30.0" prefWidth="202.0" text="0" />
+      <Button layoutX="16.0" layoutY="67.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="AC" />
+      <Button layoutX="186.0" layoutY="67.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="/" />
+      <Button layoutX="16.0" layoutY="117.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="7" />
+      <Button layoutX="72.0" layoutY="117.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="8" />
+      <Button layoutX="129.0" layoutY="117.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="9" />
+      <Button layoutX="186.0" layoutY="117.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="*" />
+      <Button layoutX="16.0" layoutY="168.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="4" />
+      <Button layoutX="72.0" layoutY="168.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="5" />
+      <Button layoutX="129.0" layoutY="168.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="6" />
+      <Button layoutX="186.0" layoutY="168.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="-" />
+      <Button layoutX="16.0" layoutY="219.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="1" />
+      <Button layoutX="72.0" layoutY="219.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="2" />
+      <Button layoutX="129.0" layoutY="219.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="3" />
+      <Button layoutX="17.0" layoutY="271.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="0" />
+      <Button layoutX="73.0" layoutY="271.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="." />
+      <Button layoutX="130.0" layoutY="271.0" mnemonicParsing="false" onAction="#onButton" prefHeight="43.0" prefWidth="50.0" text="=" />
+      <Button layoutX="187.0" layoutY="219.0" mnemonicParsing="false" onAction="#onButton" prefHeight="95.0" prefWidth="50.0" text="+" />
+      <TabPane layoutX="251.0" layoutY="14.0" prefHeight="537.0" prefWidth="607.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="AreaChart">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="611.0">
+                     <children>
+                        <AreaChart fx:id="areaChart" layoutX="14.0" layoutY="30.0" prefHeight="515.0" prefWidth="609.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="BarChart">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BarChart fx:id="barChart" layoutX="34.0" layoutY="42.0" prefHeight="515.0" prefWidth="609.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="BubbleChart">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BubbleChart fx:id="bubbleChart" layoutX="56.0" layoutY="76.0" prefHeight="510.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <NumberAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BubbleChart>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="LineChart">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <LineChart fx:id="lineChart" layoutX="93.0" layoutY="79.0" prefHeight="504.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="PieChart">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="pieChart" layoutX="73.0" layoutY="84.0" prefHeight="504.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="ScatterChart">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="531.0">
+                     <children>
+                        <ScatterChart fx:id="scatterChart" layoutX="72.0" layoutY="33.0" prefHeight="504.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </ScatterChart>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="StackedArea">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <StackedAreaChart fx:id="stackedAreaChart" layoutX="14.0" layoutY="41.0" prefHeight="504.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <NumberAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </StackedAreaChart>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="StackedBar">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <StackedBarChart fx:id="stackedBarChart" layoutX="93.0" layoutY="52.0" prefHeight="504.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </StackedBarChart>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Canvas">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Canvas fx:id="canvas" height="481.0" layoutX="13.0" layoutY="12.0" width="582.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>
