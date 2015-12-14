@@ -315,7 +315,7 @@ public class Main extends Application {
 	        content.close();
 	    } catch(IOException ie) {
 	    }
-	    doc.save(new File("test.pdf"));
+	    doc.save(new File(base + ".pdf"));
 	    doc.close();		
 	}
 
