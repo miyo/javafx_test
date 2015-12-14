@@ -1,16 +1,28 @@
 package application;
 	
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
+
+import javax.imageio.ImageIO;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.chart.AreaChart;
@@ -22,6 +34,7 @@ import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -251,6 +264,61 @@ public class Main extends Application {
 		
 		stackedBarChart.getData().add(series);
 	}
+	
+	@FXML
+	protected void onSave(ActionEvent ev){
+		Node[] nodes = new Node[]{
+				areaChart, 
+				barChart,
+				bubbleChart,
+				lineChart,
+				pieChart,
+				scatterChart,
+				stackedAreaChart,
+				stackedBarChart,
+				canvas};
+		for(Node n: nodes){
+			String base = n.getClass().getName();
+			WritableImage img = n.snapshot(new SnapshotParameters(), null);
+			try{
+				saveAsPng(img, base);
+				saveAsJpeg(img, base);
+				saveAsPDF(img, base);
+			}catch(IOException e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	private void saveAsPng(WritableImage img, String base) throws IOException{
+		File f = new File(base + ".png");
+		boolean flag = ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", f);
+	}	
+
+	private void saveAsJpeg(WritableImage img, String base) throws IOException{
+		File f = new File(base + ".jpg");
+		boolean flag = ImageIO.write(SwingFXUtils.fromFXImage(img, null), "jpg", f);
+	}
+		
+	private void saveAsPDF(WritableImage img, String base) throws IOException{
+	    PDDocument doc = null;
+	    PDPage page = null;
+	    PDImageXObject ximage = null;
+
+	    try {
+	        doc = new PDDocument();
+	        page = new PDPage();
+	        doc.addPage(page);
+	        PDPageContentStream content = new PDPageContentStream(doc, page);
+	        ximage = LosslessFactory.createFromImage(doc, SwingFXUtils.fromFXImage(img, null));
+	        content.drawImage(ximage, 20, 20);
+	        content.close();
+	    } catch(IOException ie) {
+	    }
+	    doc.save(new File("test.pdf"));
+	    doc.close();		
+	}
+
 	
 	private void canvasTest(){
 		GraphicsContext gc = canvas.getGraphicsContext2D();

@@ -162,5 +162,6 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Button layoutX="16.0" layoutY="349.0" mnemonicParsing="false" onAction="#onSave" prefHeight="43.0" prefWidth="83.0" text="Save" />
    </children>
 </Pane>
