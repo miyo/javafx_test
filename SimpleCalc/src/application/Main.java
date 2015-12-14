@@ -281,8 +281,8 @@ public class Main extends Application {
 			String base = n.getClass().getName();
 			WritableImage img = n.snapshot(new SnapshotParameters(), null);
 			try{
-				saveAsPng(img, base);
-				saveAsJpeg(img, base);
+				saveImage(img, base, "png");
+				saveImage(img, base, "jpg");
 				saveAsPDF(img, base);
 			}catch(IOException e){
 				e.printStackTrace();
@@ -290,9 +290,9 @@ public class Main extends Application {
 		}
 	}
 	
-	private void saveAsPng(WritableImage img, String base) throws IOException{
-		File f = new File(base + ".png");
-		boolean flag = ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", f);
+	private boolean saveImage(WritableImage img, String base, String fmt) throws IOException{
+		File f = new File(base + "." + fmt);
+		return ImageIO.write(SwingFXUtils.fromFXImage(img, null), fmt, f);
 	}	
 
 	private void saveAsJpeg(WritableImage img, String base) throws IOException{
