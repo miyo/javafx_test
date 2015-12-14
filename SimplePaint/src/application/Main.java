@@ -6,6 +6,12 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
@@ -51,8 +57,34 @@ public class Main extends Application {
 		System.out.println(ev);
 		WritableImage img = canvas.snapshot(new SnapshotParameters(), null);
 		try{
-			File f = new File("test.png");
-			ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", f);
+			{
+				File f = new File("test.png");
+				boolean flag = ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", f);
+				System.out.println(flag);
+			}
+			{
+				File f = new File("test.jpg");
+				boolean flag = ImageIO.write(SwingFXUtils.fromFXImage(img, null), "jpg", f);
+				System.out.println(flag);
+			}
+			
+		    PDDocument doc = null;
+		    PDPage page = null;
+		    PDImageXObject ximage = null;
+
+		    try {
+		        doc = new PDDocument();
+		        page = new PDPage();
+		        doc.addPage(page);
+		        PDPageContentStream content = new PDPageContentStream(doc, page);
+		        ximage = LosslessFactory.createFromImage(doc, SwingFXUtils.fromFXImage(img, null));
+		        content.drawImage(ximage, 20, 20);
+		        content.close();
+		    } catch(IOException ie) {
+		    }
+		    doc.save(new File("test.pdf"));
+		    doc.close();		
+		    
 		}catch(IOException e){
 			e.printStackTrace();
 		}
