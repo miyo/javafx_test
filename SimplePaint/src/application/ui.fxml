@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="476.0" layoutX="93.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="638.0" />
+      <Canvas fx:id="canvas" height="476.0" layoutX="93.0" layoutY="10.0" width="638.0" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onPut" prefHeight="25.0" prefWidth="61.0" text="Put" />
+      <Button layoutX="14.0" layoutY="51.0" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="61.0" text="Save" />
+   </children>
+</Pane>
